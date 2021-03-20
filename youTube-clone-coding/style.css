@@ -1,0 +1,225 @@
+:root {
+  /* color */
+  --white-color: #fff;
+  --black-color: #121212;
+  --blue-color: #1251c9;
+  --red-color: #ff2600;
+  --gray-dark-color: #828183;
+  --gray-light-color: #d5d3d5;
+
+  /* font-size */
+  --font-large: 20px;
+  --font-medium: 16px;
+  --font-small: 12px;
+  --font-micro: 10px;
+
+  /* size */
+  --padding: 12px;
+  --avatar-size: 36px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Roboto;
+}
+
+ul {
+  list-style: none;
+}
+
+button,
+button:focus {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: var(--white-color);
+}
+
+/* header */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--padding);
+  background-color: var(--black-color);
+  color: var(--white-color);
+}
+
+header .logo {
+  font-size: var(--font-large);
+}
+
+header .logo i {
+  color: var(--red-color);
+}
+
+header .icons .fa-search {
+  margin: var(--padding);
+}
+
+/* video player */
+
+.player {
+  text-align: center;
+  background-color: var(--black-color);
+  position: sticky;
+  top: 0;
+}
+.player video {
+  width: 100%;
+  max-width: 1000px;
+}
+
+/* info */
+.infoAndUpnext > .info {
+  padding: var(--padding);
+}
+
+/* hashtag */
+.info .metadata .hashtag {
+  display: flex;
+  font-size: var(--font-small);
+  color: var(--blue-color);
+}
+
+.info .metadata .hashtag li {
+  margin-right: var(--padding);
+}
+/* title and button */
+.info .metadata .titleAndButton {
+  display: flex;
+  justify-content: space-between;
+}
+
+.info .metadata .titleAndButton .title {
+  font-size: var(--font-medium);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin-right: var(--padding);
+}
+.info .metadata .titleAndButton .morebtn {
+  height: 100%;
+}
+/* views */
+.info .views {
+  font-size: var(--font-small);
+  color: var(--gray-dark-color);
+}
+
+/* action */
+.info .actions {
+  display: flex;
+  justify-content: space-around;
+  margin: var(--padding) 0;
+}
+.info .actions button {
+  display: flex;
+  flex-direction: column;
+  font-size: var(font-size-small);
+  color: var(--gray-dark-color);
+}
+.info .actions button i {
+  margin: 0 auto;
+  margin-bottom: calc(var(--padding) / 2);
+  font-size: 16px;
+}
+
+.info .actions button i.active {
+  color: var(--blue-color);
+}
+
+/* channel */
+.info .channel {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px dashed var(--gray-light-color);
+  border-bottom: 1px dashed var(--gray-light-color);
+}
+.info .channel .metadata {
+  display: flex;
+  align-items: center;
+}
+.info .channel .metadata img {
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  margin-right: var(--padding);
+  border-radius: 50%;
+}
+.info .channel .metadata .info {
+  display: flex;
+  flex-direction: column;
+}
+
+.info .channel .metadata .info .name {
+  font-size: var(--font-medium);
+}
+.info .channel .metadata .info .subscribers {
+  color: var(--gray-dark-color);
+  font-size: var(--font-small);
+}
+
+.info .channel .subscribe {
+  text-transform: uppercase;
+  color: var(--red-color);
+  font-size: var(--font-medium);
+}
+
+/* upNext */
+
+.upNext {
+  padding: 0 var(--padding);
+}
+.upNext > .title {
+  margin-bottom: var(--padding);
+  color: var(--gray-dark-color);
+  font-size: var(--font-micro);
+}
+
+.upNext .item {
+  display: flex;
+  margin-top: var(--padding);
+}
+
+.upNext .item .img {
+  flex: 1 1 35%;
+  margin-right: var(--padding);
+}
+.upNext .item .img img {
+  width: 100%;
+}
+.upNext .item .info {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 60%;
+}
+.upNext .item .info .name {
+  font-size: var(--font-small);
+  color: var(--gray-dark-color);
+}
+.upNext .item .info .views {
+  font-size: var(--font-micro);
+  color: var(--gray-light-color);
+}
+.upNext .item .morebtn {
+  flex: 1 1 5%;
+  height: 100%;
+}
+.infoAndUpnext {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 760px) {
+  .infoAndUpnext {
+    flex-direction: row;
+    margin: var(--padding) 0;
+  }
+}
