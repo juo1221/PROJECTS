@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Juo's Portfolio</title>
+    <meta name="description" content="Portfolio for Software Engineer Juo" />
+    <meta name="description" content="Juo" />
+    <link rel="icon" href="img/favicon.png" type="image/png" />
+    <script
+      src="https://kit.fontawesome.com/29601563c1.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="main.js" defer></script>
+  </head>
+
+  <body>
+    <!-- navbar -->
+    <nav id="navbar">
+      <div class="navbar__logo">
+        <i class="far fa-star"></i>
+        <a href="#" class="logo__name">Juo</a>
+      </div>
+      <ul class="navbar__menu">
+        <li class="navbar__menu__item active" data-link="#home">Home</li>
+        <li class="navbar__menu__item" data-link="#about">About</li>
+        <li class="navbar__menu__item" data-link="#skills">Skills</li>
+        <li class="navbar__menu__item" data-link="#work">My work</li>
+        <li class="navbar__menu__item" data-link="#testimonial">Testimonial</li>
+        <li class="navbar__menu__item" data-link="#contact">Contact</li>
+      </ul>
+    
+    <button class="navbar__toggle-btn">
+      <i class="fas fa-bars"></i>
+    </button>
+  </nav>
+
+    <!-- home -->
+    <section id="home">
+    <div class="home__container">
+        <img src="img/me.png" alt="Juo's profile photo" class="home__avatar" />
+        <h1 class="home__title">Hello, <br />I'm Juo</h1>
+        <h2 class="home__description">Dreaming of being Software Engineer</h2>
+  
+        <button class="home__button">Contact me</button>
+      </div>
+    </section>
+
+    <!-- about -->
+    <section id="about" class="section section__container">
+      <h1>About me</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga eligendi
+        molestiae vitae, maiores accusantium facere fugit quasi amet, non
+        praesentium consequuntur ut excepturi adipisci mollitia. Eos in ab totam
+        consequuntur.
+      </p>
+      <div class="about__major">
+        <div class="major">
+          <div class="major__icon"><i class="fab fa-html5"></i></div>
+          <h2 class="major__title a">Front-end</h2>
+          <div class="major__description b">
+            HTML,CSS,JavaScript,TypeScript,
+            <br />React,Vue
+          </div>
+        </div>
+        <div class="major">
+          <div class="major__icon"><i class="fas fa-undo"></i></div>
+          <h2 class="major__title a">Back-end</h2>
+          <div class="major__description b">
+            java,JavaScript,Go,,Nodejs,
+            <br />Rest APIs
+          </div>
+        </div>
+      </div>
+      <div class="about__job">
+        <div class="job">
+          <img src="img/favicon.png" alt="job logo 입니다." class="job__logo" />
+          <div class="job__description">
+            <p class="job__name">
+              Currently working at Samsung as software Engineer
+            </p>
+            <p class="job__period">2020sept, Until now</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- skills -->
+    <section id="skills" class="section">
+      <div class="section__container">
+        <h1>Skills</h1>
+        <h2>Skills & Atributes</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio
+          deleniti dolor sed numquam repellat rerum dolore.Lorem ipsum dolor sit
+          amet, consectetur adipisicing elit. Distinctio deleniti dolor sed
+          numquam repellat rerum dolore.
+        </p>
+        <div class="skills__set">
+          <!-- left -->
+          <div class="skills__left">
+            <h3 class="skills__title">Skills</h3>
+            <div class="skills">
+              <div class="skills__description">
+                <span>HTML</span>
+                <span>99%</span>
+              </div>
+              <div class="skill__bar">
+                <div class="skill__value" style="width: 99%"></div>
+              </div>
+            </div>
+            <!-- 2 -->
+            <div class="skills">
+              <div class="skills__description">
+                <span>CSS</span>
+                <span>90%</span>
+              </div>
+              <div class="skill__bar">
+                <div class="skill__value" style="width: 90%"></div>
+              </div>
+            </div>
+            <!-- 3 -->
+            <div class="skills">
+              <div class="skills__description">
+                <span>JavaScript</span>
+                <span>60%</span>
+              </div>
+              <div class="skill__bar">
+                <div class="skill__value" style="width: 60%"></div>
+              </div>
+            </div>
+            <!-- 4 -->
+            <div class="skills">
+              <div class="skills__description">
+                <span>Python</span>
+                <span>50%</span>
+              </div>
+              <div class="skill__bar">
+                <div class="skill__value" style="width: 50%"></div>
+              </div>
+            </div>
+          </div>
+          <!-- right -->
+          <div class="skills__right">
+            <div class="tools">
+              <h3 class="skills__title">Tools</h3>
+              <div class="list__container">
+                <ul class="tools__list">
+                  <li><span>Visual Studio Code</span></li>
+                  <li><span>IntelliJ</span></li>
+                  <li><span>Android Stuido code</span></li>
+                  <li><span>iOS development tools</span></li>
+                  <li><span>Sketch app</span></li>
+              </div>
+            </div>
+            <div class="etc">
+              <div class="etc_contatiner">
+                <h3 class="skills__title h3">Etc</h3>
+                <div class="list__container">
+                  <ul class="etc__list">
+                    <li><span>Git</span></li>
+                    <li><span>Scrum master</span></li>
+                    <li><span>math</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- works -->
+    <section id="work" class="section">
+      <div class="section__container">
+        <h1>My work</h1>
+        <h3>projects</h3>
+        <div class="work__categroies">
+          <button class="category__btn " data-filter="*">
+            All<span class="category__cont" >4</span></button
+          ><button class="category__btn" data-filter="front-end">
+            Front-end<span class="category__cont">2</span></button
+          ><button class="category__btn" data-filter="back-end">
+            Back-end<span class="category__cont">1</span></button
+          ><button class="category__btn" data-filter="mobile">
+            Mobile<span class="category__cont">1</span>
+          </button>
+        </div>
+        <div class="work__projects">
+          <!-- 1 -->
+          <a
+            href="https://github.com/dream-ellie/responsive-nav-bar"
+            class="project"
+            target="blank"
+            data-type= "front-end"
+          >
+            <img
+              src="img/projects/project1.png"
+              alt="navbar"
+              class="project__img"
+            />
+            <div class="project__description">
+              <h3>Youtube Site</h3>
+              <span>Clone coding with HTML and CSS</span>
+            </div>
+          </a>
+          <!-- 2 -->
+          <a
+            href="https://github.com/dream-ellie/responsive-nav-bar"
+            class="project"
+            target="blank"
+            data-type= "front-end"
+
+          >
+            <img
+              src="img/projects/project2.png"
+              alt="navbar"
+              class="project__img"
+            />
+            <div class="project__description">
+              <h3>Mini Game Site</h3>
+              <span>Clone coding with HTML and CSS</span>
+            </div>
+          </a>
+          <!-- 3 -->
+          <a
+            href="https://github.com/dream-ellie/responsive-nav-bar"
+            class="project"
+            target="blank"
+            data-type= "back-end"
+
+          >
+            <img
+              src="img/projects/project3.png"
+              alt="navbar"
+              class="project__img"
+            />
+            <div class="project__description">
+              <h3>Health Protector Site</h3>
+              <span>Clone coding with HTML and CSS</span>
+            </div>
+          </a>
+          <!-- 4 -->
+          <a
+            href="https://github.com/dream-ellie/responsive-nav-bar"
+            class="project"
+            target="blank"
+            data-type= "mobile"
+
+          >
+            <img
+              src="img/projects/project4.png"
+              alt="navbar"
+              class="project__img"
+            />
+            <div class="project__description">
+              <h3>Music Site</h3>
+              <span>Clone coding with HTML and CSS</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- testimonial -->
+    <section id="testimonial" class="section">
+      <div class="section__container">
+      <h1>Testimonials</h1>
+      <h3>See what they say about me</h3>
+      <div class="testimonials">
+        <div class="testimonial">
+          <img
+            src="img/people1-200515-154332.jpg"
+            alt="avatar"
+            class="testimonial__avatar"
+          />
+          <div class="testimonial__speech-bubble">
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos,
+              vero magnam! Unde totam odit qui rem facilis rerum doloribus
+              dignissimos deleniti asperiores obcaecati sapiente doloremque at
+              iste, necessitatibus sed quod.
+            </p>
+            <p class="speech_bubble-name"><a href="#" class= "bubble__name">Juo</a> / Samsung</p>
+          </div>
+        </div>
+        <div class="testimonial testi__2">
+          <img
+            src="img/people1-200515-154332.jpg"
+            alt="avatar"
+            class="testimonial__avatar"
+          />
+          <div class="testimonial__speech-bubble ">
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos,
+              vero magnam! Unde totam odit qui rem facilis rerum doloribus
+              dignissimos deleniti asperiores obcaecati sapiente doloremque at
+              iste, necessitatibus sed quod.
+            </p>
+            <p class="speech_bubble-name"><a href="#" class= "bubble__name">Juo</a> / Samsung</p>
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- contact -->
+    <section id="contact" class="section">
+      <h1 class="contact__talk">Let's talk</h1>
+      <h2 class="contact__email">hwgiwh271@gmail.com</h2>
+      <div class="contact__icons">
+        <a href="https://github.com/settings/emails" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://github.com/settings/emails" target="_blank">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+      <p class="contact__copyright">
+        2020 Dream Coding Ellie - All rights reserved
+      </p>
+    </section>
+    <!-- arrow up button -->
+    <button class="arrow-up">
+      <i class="fas fa-arrow-up" class='arrowUp__icon'></i>
+    </button>
+  </body>
+</html>
