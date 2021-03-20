@@ -1,0 +1,102 @@
+{
+  "items": [
+    {
+      "type": "pants",
+      "gender": "male",
+      "color": "blue",
+      "size": "small",
+      "img": "imgs/blue_p.png"
+    },
+    {
+      "type": "tshirt",
+      "gender": "male",
+      "color": "yellow",
+      "size": "large",
+      "img": "imgs/yellow_t.png"
+    },
+    {
+      "type": "tshirt",
+      "gender": "female",
+      "color": "yellow",
+      "size": "large",
+      "img": "imgs/yellow_t.png"
+    },
+    {
+      "type": "tshirt",
+      "gender": "male",
+      "color": "pink",
+      "size": "large",
+      "img": "imgs/pink_t.png"
+    },
+    {
+      "type": "tshirt",
+      "gender": "female",
+      "color": "pink",
+      "size": "large",
+      "img": "imgs/pink_t.png"
+    },
+    {
+      "type": "tshirt",
+      "gender": "female",
+      "color": "pink",
+      "size": "small",
+      "img": "imgs/pink_t.png"
+    },
+    {
+      "type": "pants",
+      "gender": "male",
+      "color": "blue",
+      "size": "large",
+      "img": "imgs/blue_p.png"
+    },
+    {
+      "type": "pants",
+      "gender": "male",
+      "color": "blue",
+      "size": "small",
+      "img": "imgs/blue_p.png"
+    },
+    {
+      "type": "pants",
+      "gender": "female",
+      "color": "blue",
+      "size": "small",
+      "img": "imgs/blue_p.png"
+    },
+    {
+      "type": "pants",
+      "gender": "male",
+      "color": "yellow",
+      "size": "large",
+      "img": "imgs/yellow_p.png"
+    },
+    {
+      "type": "pants",
+      "gender": "male",
+      "color": "yellow",
+      "size": "small",
+      "img": "imgs/yellow_p.png"
+    },
+    {
+      "type": "skirt",
+      "gender": "female",
+      "color": "yellow",
+      "size": "large",
+      "img": "imgs/yellow_s.png"
+    },
+    {
+      "type": "skirt",
+      "gender": "male",
+      "color": "pink",
+      "size": "small",
+      "img": "imgs/pink_s.png"
+    },
+    {
+      "type": "skirt",
+      "gender": "female",
+      "color": "pink",
+      "size": "large",
+      "img": "imgs/pink_s.png"
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+:root {
+  /* color */
+  --color-light-grey: #dfdfdf;
+  --color-white: white;
+  --color-blue: #3b88c3;
+  --color-yellow: #fbbe28;
+  --color-pink: #fd7f84;
+  --color-background: #3f454d;
+
+  /* size */
+  --base-space: 8px;
+  --size-button: 60px;
+  --font-size: 18px;
+  --size-border: 4px;
+  --size-thumbnail: 50px;
+
+  /* duration */
+  --transform-duration: 300ms;
+}
+
+/* typograpy */
+section {
+  padding: var(--base-space);
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  outline: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* styling */
+
+body {
+  margin: 0;
+  background-color: var(--color-background);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+}
+
+#buttons {
+  display: flex;
+  align-items: center;
+}
+.home__logo {
+  cursor: pointer;
+  transition: all var(--transform-duration) ease;
+}
+.home__logo:hover,
+.button:hover {
+  transform: scale(1.1);
+}
+.button {
+  margin: var(--base-space);
+  transition: all var(--transform-duration) ease;
+}
+
+.button img {
+  width: var(--size-button);
+  height: var(--size-button);
+}
+
+.colorBtn {
+  font-size: var(--font-size);
+  padding: calc(var(--base-space) * 2);
+  border-radius: var(--size-border);
+}
+
+.blue {
+  background-color: var(--color-blue);
+}
+.yellow {
+  background-color: var(--color-yellow);
+}
+.pink {
+  background-color: var(--color-pink);
+}
+
+.items {
+  background-color: #fd7f84;
+  margin: calc(var(--base-space) * 2);
+  width: 60%;
+  height: 40%;
+  padding-left: 0;
+  overflow-y: auto;
+  border-radius: var(--size-border);
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+.item {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  background-color: var(--color-white);
+  padding: var(--base-space);
+  border-radius: var(--size-border);
+  margin: calc(var(--base-space) * 2) 0;
+}
+.item__thumnail {
+  width: var(--size-thumbnail);
+  height: var(--size-thumbnail);
+  margin-right: var(--base-space);
+}
+.colorChange {
+  background-color: var(--color-background);
+}
+.colorblue {
+  background-color: var(--color-blue);
+}
+.coloryellow {
+  background-color: var(--color-yellow);
+}
+.colorpink {
+  background-color: var(--color-pink);
+}
+.invisible {
+  display: none;
+}
