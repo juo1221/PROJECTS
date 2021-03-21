@@ -8,6 +8,10 @@ const deleteAll = document.querySelector(".seleted");
 const TODOS_LS = "items";
 let toDos = [];
 
+
+
+
+
 // localStorage.clear();
 function onAdd(text) {
   // 1. 사용자가 입력한 텍스트 받아오기
