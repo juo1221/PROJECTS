@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,22 +11,27 @@
     ></script>
     <link rel="stylesheet" href="style.css" />
     <title>Document</title>
-    <!-- <script src="main.js" defer></script> -->
+    <script src="main.js" defer></script>
   </head>
   <body>
     <section class="container">
-      <button class="play">
-        <i class="fas fa-play"></i>
+      <button class="play" data-id="play">
+        <i class="fas fa-play" data-id="play"></i>
       </button>
-      <div class="play__time">00:00</div>
+      <button class="stop invisible" data-id="play">
+        <i class="fas fa-stop" data-id="stop"></i>
+      </button>
+      <div class="play__time">
+        <span class="time__count">00:10</span>
+      </div>
       <div class="count">10</div>
     </section>
 
     <section class="result">
-      <button class="redo">
-        <i class="fas fa-redo-alt"></i>
+      <!-- <button class="redo" data-key="key">
+        <i class="fas fa-redo-alt" data-key="key"></i>
       </button>
-      YOU WON
+      YOU WON -->
     </section>
   </body>
 </html>

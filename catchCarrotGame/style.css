@@ -37,7 +37,17 @@ button {
   cursor: pointer;
   outline: none;
   border: none;
+  transition: all var(--animation-duration) ease;
 }
+
+button:hover {
+  transform: scale(1.1);
+}
+
+button:active {
+  transform: translateY(3px);
+}
+
 body {
   display: flex;
   align-items: center;
@@ -57,26 +67,35 @@ body {
   transform: translateY(-50%);
 }
 .play,
+.stop,
 .play__time,
 .count {
   margin-bottom: calc(var(--padding-space) / 3);
 }
 .play {
-  width: 60%;
+  width: calc(var(--size-width) / 5);
   border-radius: calc(var(--border-radius) * 2);
   border: 3px solid var(--color-black);
   padding: calc(var(--padding-space) / 2);
   font-size: var(--font-medium);
   background-color: var(--color-yellow);
-  transition: transform var(--animation-duration) ease;
 }
 
-.play:hover {
-  transform: scale(1.1);
+.stop {
+  width: calc(var(--size-width) / 5);
+  border-radius: calc(var(--border-radius) * 2);
+  border: 3px solid var(--color-black);
+  padding: calc(var(--padding-space) / 2);
+  font-size: var(--font-medium);
+  background-color: var(--color-yellow);
+}
+
+.invisible {
+  display: none;
 }
 
 .play__time {
-  width: 200%;
+  width: calc(var(--size-width) / 2);
   text-align: center;
   border-radius: calc(var(--border-radius) * 2);
   border: 3px solid var(--color-black);
@@ -112,10 +131,6 @@ body {
   border-radius: calc(var(--border-radius) * 2);
   font-size: var(--font-regular);
   background-color: var(--color-yellow);
-  transition: transform var(--animation-duration) ease;
-}
-.redo:hover {
-  transform: scale(1.1);
 }
 
 @media screen and (max-width: 900px) {
@@ -151,5 +166,9 @@ body {
   }
   .container {
     transform: translateY(-40%);
+  }
+  .result {
+    width: 20%;
+    transform: translateY(40%);
   }
 }
