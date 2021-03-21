@@ -1,6 +1,7 @@
 # catch carrot game
 
 https://juo1221.github.io/PROJECTS/catchCarrotGame/
+
 기능 
 1. 플레이 버튼 클릭 시 stop 아이콘으로 변경 되면서 게임 시작
 2. 게임 시작시 당근과 벌레의 위치는 랜덤으로 선택됨
