@@ -117,3 +117,39 @@ body {
 .redo:hover {
   transform: scale(1.1);
 }
+
+@media screen and (max-width: 900px) {
+  :root {
+    /* Font size */
+    --font-large: 1.875rem;
+    --font-medium: 1.125rem;
+    --font-regular: 1rem;
+    --font-small: 0.875rem;
+    --font-micro: 0.75rem;
+
+    --padding-space: 10px;
+  }
+  body {
+    background: url(img/backgroundM.png) center/cover no-repeat;
+  }
+
+  .container {
+    transform: translateY(0);
+  }
+  .result {
+    width: calc(var(--size-width) / 1.2);
+    height: var(--size-height);
+    background-color: var(--color-light-black);
+    border-radius: calc(var(--border-radius) * 5);
+    font-size: var(--font-large);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    background: url(img/backgroundM.png) center/cover no-repeat;
+  }
+  .container {
+    transform: translateY(-40%);
+  }
+}
