@@ -1,6 +1,6 @@
 # Memo app 
 
-https://juo1221.github.io/PROJECTS/.
+https://juo1221.github.io/PROJECTS/memo/
 
 기능 
 1. 모바일도 사용가능한 반응형 
