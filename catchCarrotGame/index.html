@@ -14,7 +14,7 @@
     <script src="main.js" defer></script>
   </head>
   <body>
-    <section class="container">
+    <section id="container">
       <button class="play" data-id="play">
         <i class="fas fa-play" data-id="play"></i>
       </button>
@@ -24,14 +24,15 @@
       <div class="play__time">
         <span class="time__count">00:10</span>
       </div>
-      <div class="count">10</div>
+      <div class="count">
+        <span class="carrot__count">0</span>
+      </div>
     </section>
 
-    <section class="result">
-      <!-- <button class="redo" data-key="key">
-        <i class="fas fa-redo-alt" data-key="key"></i>
-      </button>
-      YOU WON -->
+    <section id="result__container"></section>
+    <section id="img__container">
+      <!-- <img src="img/carrot.png" alt="당근당근" /> -->
+      <!-- <img src="img/bug.png" alt="벌레벌레" /> -->
     </section>
   </body>
 </html>

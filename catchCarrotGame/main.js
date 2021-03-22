@@ -2,10 +2,17 @@
 
 const playBtn = document.querySelector(".play");
 const stpBtn = document.querySelector(".stop");
-const redoBtn = document.querySelector(".redo");
 const body = document.querySelector("body");
 const play__time = document.querySelector(".play__time");
-const result = document.querySelector(".result");
+const result__container = document.querySelector("#result__container");
+const img__container = document.querySelector("#img__container");
+const result = document.createElement("div");
+const imgContainerW = img__container.getBoundingClientRect().width;
+const imgContainerH = img__container.getBoundingClientRect().height;
+const count = document.querySelector(".count");
+const carrot__count = document.querySelector(".carrot__count");
+result.setAttribute("class", "result");
+
 const clickDown = new Audio(
   "https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/clickUp.mp3"
 );
@@ -16,13 +23,42 @@ const bg = new Audio("sound/bg.mp3");
 
 const winBgm = new Audio("sound/game_win.mp3");
 
+const lostBgm = new Audio("sound/lost.mp3");
+
+const alert = new Audio("sound/alert.wav");
+
+function loadBugimg() {
+  return fetch("JSON/bugs.json")
+    .then((response) => response.json())
+    .then((json) => json.imgs);
+}
 const onPlayBtn = () => {
   playBtn.classList.add("invisible");
   stpBtn.classList.remove("invisible");
 };
+const onRePlay = () => {
+  window.location.reload(); // 새로고침
+  // playBtn.classList.add("invisible");
+  // stpBtn.classList.remove("invisible");
+  // result.remove();
+  // gameStart(false);
+};
+
 const onStopBtn = () => {
   stpBtn.classList.add("invisible");
-  playBtn.classList.remove("invisible");
+  alert.play();
+  result.innerHTML = `
+    
+        <button class="redo" data-key="key">
+        <i class="fas fa-redo-alt" data-key="key"></i>
+        </button>
+        replay?
+    
+  `;
+  result__container.appendChild(result);
+  result__container.style.zIndex = "1";
+  let redoBtn = document.querySelector(".redo");
+  redoBtn.addEventListener("click", onRePlay);
 };
 
 let time = 10;
@@ -30,11 +66,19 @@ let timerId = null;
 
 function creatResult() {
   result.innerHTML = `
-    <button class="redo" data-key="key">
-    <i class="fas fa-redo-alt" data-key="key"></i>
-    </button>
-    YOU WON
-    `;
+    
+        <button class="redo" data-key="key">
+        <i class="fas fa-redo-alt" data-key="key"></i>
+        </button>
+        YOU LOST
+    
+  `;
+  result__container.appendChild(result);
+  result__container.style.zIndex = "1";
+
+  stpBtn.classList.add("invisible");
+  let redoBtn = document.querySelector(".redo");
+  redoBtn.addEventListener("click", onRePlay);
 }
 
 function countDown() {
@@ -45,43 +89,119 @@ function countDown() {
   if (time <= 0) {
     clearInterval(timerId);
     bg.pause();
-    winBgm.play();
-    creatResult();
+    lostBgm.play();
     time = 10;
     play__time.innerHTML = `
     <span class="time__count">00:${time}</span>
     `;
-  }
-}
-
-function gameStart(playOrNo) {
-  if (!playOrNo) {
-    bg.volume = 0.1;
-    bg.play();
-    timerId = setInterval(countDown, 1000);
-  } else {
-    bg.pause();
-    // window.stop();
+    creatResult();
   }
 }
 
 function startOrStop() {
   playBtn.addEventListener("click", onPlayBtn);
   stpBtn.addEventListener("click", onStopBtn);
+
   let isPlay = playBtn.classList.contains("invisible");
 
   return isPlay;
 }
 
+function creatString(img) {
+  return `
+  <img src="${img.imgC}" alt="당근당근" class="carrotImgs"/>
+  <img src="${img.imgB}" alt="벌레벌레" class="bugImgs"/>
+  `;
+}
+
+function setBugcoor(bug, imgwidth, imgheight) {
+  const coorX = Math.random() * (imgContainerW - imgwidth);
+  const coorY = Math.random() * (imgContainerH - imgheight);
+  bug.setAttribute("data-bug", "1");
+  bug.style.transform = `translate(${coorX}px,${coorY}px)`;
+}
+function setCarrotCoor(carrot, imgwidth, imgheight) {
+  const coorX = Math.random() * (imgContainerW - imgwidth);
+  const coorY = Math.random() * (imgContainerH - imgheight);
+  carrot.setAttribute("data-carrot", "2");
+  carrot.style.transform = `translate(${coorX}px,${coorY}px)`;
+}
+
+function displayImgs(imgs) {
+  const html = imgs.map((img) => creatString(img)).join("");
+  img__container.innerHTML = html;
+  const bug = document.querySelector(".bugImgs");
+  const bugwidth = bug.getBoundingClientRect().width;
+  const bugheight = bug.getBoundingClientRect().height;
+  const carrot = document.querySelector(".carrotImgs");
+  const carrotwidth = carrot.getBoundingClientRect().width;
+  const carrotheight = carrot.getBoundingClientRect().height;
+
+  const bugsArray = Array.from(document.querySelectorAll(".bugImgs"));
+  const carrotArray = Array.from(document.querySelectorAll(".carrotImgs"));
+
+  bugsArray.forEach((bug) => setBugcoor(bug, bugwidth, bugheight));
+  carrotArray.forEach((carrot) =>
+    setCarrotCoor(carrot, carrotwidth, carrotheight)
+  );
+  const carrotNumBer = carrotArray.length;
+  creatCarrotCount(carrotNumBer);
+}
+function itemsReady() {
+  loadBugimg().then((imgs) => {
+    displayImgs(imgs);
+  });
+}
+
+function gameStart(playOrNo) {
+  if (!playOrNo) {
+    bg.volume = 0.1;
+    bg.play();
+    itemsReady();
+    timerId = setInterval(countDown, 1000);
+  } else {
+    bg.pause();
+    clearInterval(timerId);
+    time = 10;
+    play__time.innerHTML = `
+    <span class="time__count">00:${time}</span>
+`;
+  }
+}
+
+function onSetting() {
+  clickDown.volume = 0.2;
+  clickDown.play();
+  const playOrNo = startOrStop();
+  gameStart(playOrNo);
+}
+
+function gameDown() {
+  bg.pause();
+  clearInterval(timerId);
+  lostBgm.play();
+  time = 10;
+  play__time.innerHTML = `
+  <span class="time__count">00:${time}</span>`;
+  creatResult();
+}
+function creatCarrotCount(carrotNumBer) {
+  // const carrotArray2 = Array.from(document.querySelectorAll(".carrotImgs"));
+  // let carrotNum = carrotArray2.length;
+  carrot__count.innerHTML = `
+  <span class="carrot__count">${carrotNumBer}</span>
+  `;
+  count.appendChild(carrot__count);
+}
+
 function init() {
   body.addEventListener("mousedown", (e) => {
     const id = e.target.dataset.id || e.target.dataset.key;
-    if (id) {
-      clickDown.volume = 0.2;
-      clickDown.play();
-      const playOrNo = startOrStop();
-      gameStart(playOrNo);
-    }
+    const bug = e.target.dataset.bug;
+    const carrot = e.target.dataset.carrot;
+    id && onSetting();
+    bug && gameDown();
+    carrot && creatCarrotCount();
   });
 }
 
