@@ -250,7 +250,7 @@ function carrotRemoveAndUpdate(e) {
 }
 
 function init() {
-  window.alert("하단 바 생성시 화면을 터치 후 위로 미세요!");
+  window.alert("하단 바 생성시 화면을 위로 드래그");
   body.addEventListener("mousedown", (e) => {
     const id = e.target.dataset.id || e.target.dataset.key;
     const bug = e.target.dataset.bug;
