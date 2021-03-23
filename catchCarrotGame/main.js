@@ -39,11 +39,11 @@ const onPlayBtn = () => {
   stpBtn.classList.remove("invisible");
 };
 const onRePlay = () => {
-  window.location.reload(); // 새로고침
-  // playBtn.classList.add("invisible");
-  // stpBtn.classList.remove("invisible");
-  // result.remove();
-  // gameStart(false);
+  // window.location.reload(); // 새로고침
+  playBtn.classList.add("invisible");
+  stpBtn.classList.remove("invisible");
+  result.remove();
+  gameStart(false);
 };
 
 const onStopBtn = () => {
@@ -250,6 +250,7 @@ function carrotRemoveAndUpdate(e) {
 }
 
 function init() {
+  window.alert("하단 바 생성시 화면을 터치 후 위로 미세요!");
   body.addEventListener("mousedown", (e) => {
     const id = e.target.dataset.id || e.target.dataset.key;
     const bug = e.target.dataset.bug;
