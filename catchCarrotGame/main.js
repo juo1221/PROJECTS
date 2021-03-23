@@ -27,6 +27,8 @@ const lostBgm = new Audio("sound/lost.mp3");
 
 const alert = new Audio("sound/alert.wav");
 
+const carrotPull = new Audio("sound/carrot_pull.mp3");
+
 function loadBugimg() {
   return fetch("JSON/bugs.json")
     .then((response) => response.json())
@@ -37,11 +39,11 @@ const onPlayBtn = () => {
   stpBtn.classList.remove("invisible");
 };
 const onRePlay = () => {
-  window.location.reload(); // 새로고침
-  // playBtn.classList.add("invisible");
-  // stpBtn.classList.remove("invisible");
-  // result.remove();
-  // gameStart(false);
+  // window.location.reload(); // 새로고침
+  playBtn.classList.add("invisible");
+  stpBtn.classList.remove("invisible");
+  result.remove();
+  gameStart(false);
 };
 
 const onStopBtn = () => {
@@ -64,7 +66,7 @@ const onStopBtn = () => {
 let time = 10;
 let timerId = null;
 
-function creatResult() {
+function creatLostResult() {
   result.innerHTML = `
     
         <button class="redo" data-key="key">
@@ -75,7 +77,21 @@ function creatResult() {
   `;
   result__container.appendChild(result);
   result__container.style.zIndex = "1";
-
+  stpBtn.classList.add("invisible");
+  let redoBtn = document.querySelector(".redo");
+  redoBtn.addEventListener("click", onRePlay);
+}
+function creatWinResult() {
+  result.innerHTML = `
+    
+        <button class="redo" data-key="key">
+        <i class="fas fa-redo-alt" data-key="key"></i>
+        </button>
+        YOU WIN!!!
+    
+  `;
+  result__container.appendChild(result);
+  result__container.style.zIndex = "1";
   stpBtn.classList.add("invisible");
   let redoBtn = document.querySelector(".redo");
   redoBtn.addEventListener("click", onRePlay);
@@ -89,12 +105,14 @@ function countDown() {
   if (time <= 0) {
     clearInterval(timerId);
     bg.pause();
+    bg.currentTime = 0;
     lostBgm.play();
     time = 10;
     play__time.innerHTML = `
     <span class="time__count">00:${time}</span>
     `;
-    creatResult();
+    creatLostResult();
+    removeCarrotClick();
   }
 }
 
@@ -144,8 +162,8 @@ function displayImgs(imgs) {
   carrotArray.forEach((carrot) =>
     setCarrotCoor(carrot, carrotwidth, carrotheight)
   );
-  const carrotNumBer = carrotArray.length;
-  creatCarrotCount(carrotNumBer);
+
+  creatCarrotCount();
 }
 function itemsReady() {
   loadBugimg().then((imgs) => {
@@ -161,11 +179,14 @@ function gameStart(playOrNo) {
     timerId = setInterval(countDown, 1000);
   } else {
     bg.pause();
+    bg.currentTime = 0;
     clearInterval(timerId);
     time = 10;
     play__time.innerHTML = `
     <span class="time__count">00:${time}</span>
+    
 `;
+    removeCarrotClick();
   }
 }
 
@@ -178,20 +199,54 @@ function onSetting() {
 
 function gameDown() {
   bg.pause();
+  bg.currentTime = 0;
+
   clearInterval(timerId);
   lostBgm.play();
   time = 10;
   play__time.innerHTML = `
   <span class="time__count">00:${time}</span>`;
-  creatResult();
+  creatLostResult();
+  removeCarrotClick();
 }
-function creatCarrotCount(carrotNumBer) {
-  // const carrotArray2 = Array.from(document.querySelectorAll(".carrotImgs"));
-  // let carrotNum = carrotArray2.length;
+
+function gameWin() {
+  bg.pause();
+  bg.currentTime = 0;
+
+  clearInterval(timerId);
+  winBgm.play();
+  time = 10;
+  play__time.innerHTML = `
+  <span class="time__count">00:${time}</span>`;
+  creatWinResult();
+}
+function removeCarrotClick() {
+  const carrotArray = Array.from(document.querySelectorAll(".carrotImgs"));
+  carrotArray.forEach((carrot) => {
+    delete carrot.dataset.carrot;
+  });
+}
+
+function creatCarrotCount() {
+  const carrotArray = Array.from(document.querySelectorAll(".carrotImgs"));
+  let carrotNum = carrotArray.length;
   carrot__count.innerHTML = `
-  <span class="carrot__count">${carrotNumBer}</span>
+  <span class="carrot__count">${carrotNum}</span>
   `;
   count.appendChild(carrot__count);
+
+  if (carrotNum === 0) {
+    gameWin();
+  }
+}
+
+function carrotRemoveAndUpdate(e) {
+  carrotPull.currentTime = 0; // 빠르게 클릭 시 소리 지연 방지
+  carrotPull.play();
+  const removeTarget = e.target;
+  removeTarget.remove();
+  creatCarrotCount();
 }
 
 function init() {
@@ -201,7 +256,7 @@ function init() {
     const carrot = e.target.dataset.carrot;
     id && onSetting();
     bug && gameDown();
-    carrot && creatCarrotCount();
+    carrot && carrotRemoveAndUpdate(e);
   });
 }
 
