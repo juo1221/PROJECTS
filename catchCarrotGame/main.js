@@ -39,11 +39,11 @@ const onPlayBtn = () => {
   stpBtn.classList.remove("invisible");
 };
 const onRePlay = () => {
-  // window.location.reload(); // 새로고침
-  playBtn.classList.add("invisible");
-  stpBtn.classList.remove("invisible");
-  result.remove();
-  gameStart(false);
+  window.location.reload(); // 새로고침
+  // playBtn.classList.add("invisible");
+  // stpBtn.classList.remove("invisible");
+  // result.remove();
+  // gameStart(false);
 };
 
 const onStopBtn = () => {
