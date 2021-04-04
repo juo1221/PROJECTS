@@ -1,7 +1,7 @@
 :root {
   /* color */
   --color-white: #ffffff;
-  --color-light-black: #00000057;
+  --color-light-black: #0000007a;
   --color-black: black;
   --color-pink: #fbeccdcb;
   --color-orange: #feb546;
@@ -62,7 +62,7 @@ body {
   overflow: hidden;
 }
 
-#container {
+#game__container {
   position: absolute;
   top: 5%;
   left: 50%;
@@ -71,13 +71,12 @@ body {
   align-items: center;
   transform: translate(-50%, -50%);
 }
-.play,
-.stop,
-.play__time,
+.playBtn,
+.game__timer,
 .count {
   margin-bottom: calc(var(--padding-space) / 3);
 }
-.play {
+.playBtn {
   position: absolute;
   width: calc(var(--size-width) / 5);
   border-radius: calc(var(--border-radius) * 2);
@@ -87,21 +86,7 @@ body {
   background-color: var(--color-yellow);
 }
 
-.stop {
-  width: calc(var(--size-width) / 5);
-  border-radius: calc(var(--border-radius) * 2);
-  border: solid var(--color-black);
-  padding: calc(var(--padding-space) / 2);
-  font-size: var(--font-medium);
-  background-color: var(--color-yellow);
-}
-
-.invisible {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.play__time {
+.game__timer {
   position: absolute;
   transform: translateY(calc(var(--font-large) * 1.25));
 
@@ -132,7 +117,8 @@ body {
   font-size: var(--font-medium);
 }
 
-.result {
+.popUp {
+  z-index: 1;
   position: absolute;
   top: 70%;
   left: 50%;
@@ -144,9 +130,13 @@ body {
   width: 50%;
   min-width: calc(var(--font-small) / 0.53);
   height: calc(var(--size-height) * 1.4);
-  background-color: var(--color-light-black);
+  /* background-color: var(--color-light-black); */
   border-radius: calc(var(--border-radius) * 5);
   font-size: var(--font-large);
+}
+
+.invisible {
+  display: none;
 }
 
 .redo {
@@ -158,7 +148,7 @@ body {
   background-color: var(--color-yellow);
 }
 
-#img__container {
+#item__container {
   background-color: var(--color-pink);
   border-radius: 50%;
   position: absolute;
@@ -167,19 +157,19 @@ body {
   height: 50%;
 }
 
-.bugImgs,
-.carrotImgs {
+.bugImg,
+.carrotImg {
   position: absolute;
   width: calc(var(--font-small) * 3.125);
   height: calc(var(--font-small) * 3.125);
   transition: all var(--animation-duration) ease;
 }
 
-.bugImgs:hover {
+.bugImg:hover {
   width: calc(var(--font-large) * 1.1);
   height: calc(var(--font-large) * 1.1);
 }
-.carrotImgs:hover:hover {
+.carrotImg:hover {
   width: calc(var(--font-large) * 1.2);
   height: calc(var(--font-large) * 1.2);
 }
@@ -198,13 +188,14 @@ body {
     background: url(img/backgroundM.png) center/cover no-repeat;
   }
 
-  .result {
+  .popUp {
     height: calc(var(--size-height) / 1.5);
     border-radius: calc(var(--border-radius) * 5);
     font-size: var(--font-large);
   }
-  .bugImgs,
-  .carrotImgs {
+
+  .bugImg,
+  .carrotImg {
     position: absolute;
     width: calc(var(--font-small));
     height: calc(var(--font-small));
@@ -216,7 +207,7 @@ body {
   body {
     background: url(img/backgroundM.png) center/cover no-repeat;
   }
-  .result {
+  .popUp {
     width: 100%;
   }
 }
