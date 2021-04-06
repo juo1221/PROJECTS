@@ -38,11 +38,11 @@ button {
   cursor: pointer;
   outline: none;
   border: none;
-  transition: all var(--animation-duration) ease;
+  transition: transform var(--animation-duration) ease-in;
 }
 
 button:hover {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 button:active {
@@ -78,11 +78,12 @@ body {
 }
 .playBtn {
   position: absolute;
-  width: calc(var(--size-width) / 5);
+  width: calc(var(--font-small) * 4.375);
+  height: calc(var(--font-small) * 3.125);
   border-radius: calc(var(--border-radius) * 2);
   border: solid var(--color-black);
   padding: calc(var(--padding-space) / 2);
-  font-size: var(--font-medium);
+  font-size: var(--font-regular);
   background-color: var(--color-yellow);
 }
 
@@ -98,6 +99,7 @@ body {
   font-size: var(--font-medium);
   background-color: var(--color-white);
 }
+
 .count {
   width: calc(var(--font-small) * 5);
   position: absolute;
@@ -130,12 +132,11 @@ body {
   width: 50%;
   min-width: calc(var(--font-small) / 0.53);
   height: calc(var(--size-height) * 1.4);
-  /* background-color: var(--color-light-black); */
+  background-color: var(--color-light-black);
   border-radius: calc(var(--border-radius) * 5);
   font-size: var(--font-large);
 }
-
-.invisible {
+.hidePopUp {
   display: none;
 }
 

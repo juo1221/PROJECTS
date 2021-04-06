@@ -1,5 +1,7 @@
 "use strict";
 
+import * as sound from "./sound.js";
+
 const carrotCount = 5;
 const bugCount = 4;
 const time = 10;
@@ -23,18 +25,6 @@ const carrot__count = document.querySelector(".carrot__count");
 const popUp__container = document.querySelector("#popUp__container");
 const popUp = document.querySelector(".popUp");
 
-const clickDown = new Audio(
-  "https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/clickUp.mp3"
-);
-const clickUp = new Audio(
-  "https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/click.mp3"
-);
-const bg = new Audio("sound/bg.mp3");
-const winBgm = new Audio("sound/game_win.mp3");
-const lostBgm = new Audio("sound/lost.mp3");
-const alert = new Audio("sound/alert.wav");
-const carrotPull = new Audio("sound/carrot_pull.mp3");
-
 playBtn.addEventListener("click", () => {
   if (gamePlay) {
     gameStop("cancel");
@@ -46,7 +36,7 @@ playBtn.addEventListener("click", () => {
 function gameStart() {
   gamePlay = true;
   init();
-  playSound(bg);
+  sound.Playbg();
   countDown();
   hidePopUp();
   showStopButton();
@@ -66,7 +56,7 @@ function itemClick(e) {
   }
   if (e.target.className === "carrotImg") {
     e.target.remove();
-    playSound(carrotPull);
+    sound.playcarrotPull();
     showCarrotScore(score--);
   } else if (e.target.className === "bugImg") {
     gameStop("lose");
@@ -85,16 +75,16 @@ function init() {
 
 function gameResult(result) {
   if (result === "win") {
-    playSound(winBgm);
+    sound.playwinBgm();
     creatPopUpMsg("YOU WIN 👏");
   } else if (result === "lose") {
-    playSound(lostBgm);
+    sound.playlostBgm();
     creatPopUpMsg("YOU LOST 🤣");
   } else {
-    playSound(alert);
+    sound.playalert();
     creatPopUpMsg("REPLAY ?");
   }
-  stopSound(bg);
+  sound.stopbg();
   clearInterval(timerId);
 }
 // 데이터 준비(당근,벌레)
@@ -116,16 +106,15 @@ function itemsReady(itemClass, imgPath, count) {
 
 function creatPopUpMsg(text) {
   popUp.innerHTML = `
-  
+
   <button class="redo">
   <i class="fas fa-redo-alt"></i>
   </button>
   ${text}
-  
+
   `;
   popUp__container.appendChild(popUp);
-  popUp.classList.remove("invisible");
-  popUp.style.backgroundColor = "rgba(0,0,0,0.5)";
+  popUp.classList.remove("hidePopUp");
   let redoBtn = document.querySelector(".redo");
   redoBtn.addEventListener("click", gameStart);
 }
@@ -145,19 +134,10 @@ function countDown() {
 }
 
 function hidePopUp() {
-  popUp.classList.add("invisible");
+  popUp.classList.add("hidePopUp");
 }
 
 // window.alert("하단 바 생성시 화면을 위로 드래그");
-
-function playSound(sound) {
-  sound.currentTime = 0;
-  sound.play();
-}
-
-function stopSound(sound) {
-  sound.pause();
-}
 
 function updateTimer(time) {
   const minute = Math.floor(time / 60);
