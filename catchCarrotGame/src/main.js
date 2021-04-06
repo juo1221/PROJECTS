@@ -1,6 +1,7 @@
 "use strict";
 
 import * as sound from "./sound.js";
+import PopUp from "./PopUp.js";
 
 const carrotCount = 5;
 const bugCount = 4;
@@ -21,9 +22,11 @@ const imgContainerW = item__container.getBoundingClientRect().width;
 const imgContainerH = item__container.getBoundingClientRect().height;
 
 const carrot__count = document.querySelector(".carrot__count");
+const popUp = new PopUp();
 
-const popUp__container = document.querySelector("#popUp__container");
-const popUp = document.querySelector(".popUp");
+popUp.setOnclick(() => {
+  gameStart();
+});
 
 playBtn.addEventListener("click", () => {
   if (gamePlay) {
@@ -38,7 +41,6 @@ function gameStart() {
   init();
   sound.Playbg();
   countDown();
-  hidePopUp();
   showStopButton();
 }
 
@@ -67,8 +69,8 @@ function init() {
   score = carrotCount;
   item__container.innerHTML = "";
   showCarrotScore(score);
-  itemsReady("carrotImg", "img/carrot.png", "5");
-  itemsReady("bugImg", "img/bug.png", "6");
+  itemsReady("carrotImg", "img/carrot.png", carrotCount);
+  itemsReady("bugImg", "img/bug.png", bugCount);
 }
 
 //  게임 결과
@@ -76,17 +78,18 @@ function init() {
 function gameResult(result) {
   if (result === "win") {
     sound.playwinBgm();
-    creatPopUpMsg("YOU WIN 👏");
+    popUp.creatPopUpMsg("YOU WIN 👏");
   } else if (result === "lose") {
     sound.playlostBgm();
-    creatPopUpMsg("YOU LOST 🤣");
+    popUp.creatPopUpMsg("YOU LOST 🤣");
   } else {
     sound.playalert();
-    creatPopUpMsg("REPLAY ?");
+    popUp.creatPopUpMsg("REPLAY ?");
   }
   sound.stopbg();
   clearInterval(timerId);
 }
+
 // 데이터 준비(당근,벌레)
 
 function itemsReady(itemClass, imgPath, count) {
@@ -102,23 +105,6 @@ function itemsReady(itemClass, imgPath, count) {
   }
 }
 
-// 팝업 메세지
-
-function creatPopUpMsg(text) {
-  popUp.innerHTML = `
-
-  <button class="redo">
-  <i class="fas fa-redo-alt"></i>
-  </button>
-  ${text}
-
-  `;
-  popUp__container.appendChild(popUp);
-  popUp.classList.remove("hidePopUp");
-  let redoBtn = document.querySelector(".redo");
-  redoBtn.addEventListener("click", gameStart);
-}
-
 // 카운트다운 시작
 
 function countDown() {
@@ -131,10 +117,6 @@ function countDown() {
     }
     updateTimer(--currentTime);
   }, 1000);
-}
-
-function hidePopUp() {
-  popUp.classList.add("hidePopUp");
 }
 
 // window.alert("하단 바 생성시 화면을 위로 드래그");
