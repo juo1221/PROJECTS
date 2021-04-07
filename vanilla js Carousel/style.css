@@ -1,0 +1,135 @@
+:root {
+  /* color */
+  --color-white: #ffffff;
+  --color-light-black: #0000007a;
+  --color-light-gray: rgb(217, 217, 217);
+  --color-black: black;
+  --color-pink: #fbeccdcb;
+  --color-red: rgb(241, 172, 172);
+  --color-green: rgb(164, 248, 164);
+  --color-orange: #feb546;
+  --color-yellow: #fff7d1;
+  --color-blue: rgb(121, 182, 253);
+  /* weight weight */
+  --weight-bold: 700;
+  --weight-semi-bold: 600;
+  --weight-regular: 400;
+
+  /* font-size */
+  --font-large: 3rem;
+  --font-medium: 1.75rem;
+  --font-regular: 1.125rem;
+  --font-small: 1rem;
+  --font-micro: 0.875rem;
+
+  /* size */
+  --size-width: 4rem;
+  --size-height: 4rem;
+  --border-radius: 0.25rem;
+  --padding-space: 1.25rem;
+  --count-height: 1.875rem;
+
+  /* animation duration */
+  --animation-duration: 300ms;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  width: var(--size-width);
+  height: var(--size-height);
+  background-color: white;
+  border: 1px solid gray;
+  outline: 0;
+  cursor: pointer;
+}
+
+button:active {
+  border: 1px solid var(--color-blue);
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  text-align: center;
+}
+
+#container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.slide__box {
+  width: 400px;
+  overflow: hidden;
+}
+
+.slide__list {
+  display: flex;
+  background-color: #feb546;
+  height: 400px;
+  transform: translateX(-400px);
+}
+
+.slide__content {
+  position: relative;
+  color: var(--color-light-black);
+  font-size: calc(var(--font-large) * 2);
+  font-weight: var(--weight-bold);
+  width: 400px;
+  height: 100%;
+}
+
+p {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.s1 {
+  background: var(--color-pink);
+}
+.s2 {
+  background: var(--color-red);
+}
+.s3 {
+  background: var(--color-orange);
+}
+.s4 {
+  background: var(--color-yellow);
+}
+.s5 {
+  background: var(--color-green);
+}
+
+.toggles {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  transform: translateY(-150%);
+}
+
+.toggle {
+  cursor: pointer;
+  background-color: var(--color-light-gray);
+  width: calc(var(--size-width) / 4);
+  height: calc(var(--size-height) / 4);
+  border-radius: 50%;
+  margin: calc(var(--padding-space) / 3);
+  transition: background-color 300ms ease;
+}
+.selected {
+  background-color: var(--color-black);
+}
