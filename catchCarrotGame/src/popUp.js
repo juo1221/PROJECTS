@@ -7,10 +7,10 @@ export default class PopUp {
   }
 
   setOnclick(onClick) {
-    this.onClick = onClick;
+    this.onClickListner = onClick;
   }
 
-  creatPopUpMsg(text) {
+  creatMsg(text) {
     this.popUp.innerHTML = `
   
     <button class="redo">
@@ -22,8 +22,9 @@ export default class PopUp {
     this.popUp__container.appendChild(this.popUp);
     this.popUp.classList.remove("hidePopUp");
     this.redoBtn = document.querySelector(".redo");
+
     this.redoBtn.addEventListener("click", () => {
-      this.onClick && this.onClick();
+      this.onClickListner && this.onClickListner();
       this.hide();
     });
   }
