@@ -5,7 +5,13 @@ const slide__width = 400;
 const nextBtn = document.querySelector(".next");
 const prevBtn = document.querySelector(".prev");
 const toggles = document.querySelector(".toggles");
-const toggleArr = document.querySelectorAll(".toggle");
+const toggleNodeList = document.querySelectorAll(".toggle");
+
+const toggleArr = Array.from(toggleNodeList);
+
+for (let i = 0; i < toggleArr.length; i++) {
+  toggleArr[i].setAttribute("data-num", i + 1);
+}
 
 // 노드 카피
 let firstChild = slide__list.firstElementChild;
@@ -39,10 +45,10 @@ function onNextBtn() {
     }, 300);
     curIndex = 1;
   }
+  activateToggle();
 }
 
 function onPrevBtn() {
-  console.log(curIndex);
   if (curIndex >= 0) {
     slide__list.style.transition = "300ms";
     slide__list.style.transform = `translateX(${
@@ -57,14 +63,25 @@ function onPrevBtn() {
     }, 300);
     curIndex = 5;
   }
+  activateToggle();
+}
+
+function activateToggle() {
+  const toggleActive = toggleArr[curIndex - 1];
+  const selected = document.querySelector(".selected");
+  selected.classList.remove("selected");
+  toggleActive.classList.add("selected");
 }
 
 function onToggleBtn(e) {
-  toggleArr.forEach((toggle) => {
-    toggle.classList.remove("selected");
-  });
   const target = e.target;
-  if (target.matches(".toggle")) {
+  if (!target.matches(".toggle")) {
+    return;
+  } else {
+    curIndex = parseInt(target.dataset.num) - 1;
+    onNextBtn();
+    const selected = document.querySelector(".selected");
+    selected.classList.remove("selected");
     target.classList.add("selected");
   }
 }
